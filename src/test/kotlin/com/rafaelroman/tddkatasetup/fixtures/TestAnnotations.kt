@@ -1,4 +1,4 @@
-package com.rafaelroman.tddkatasetup
+package com.rafaelroman.tddkatasetup.fixtures
 
 import org.springframework.boot.test.util.TestPropertyValues
 import org.springframework.context.ApplicationContextInitializer

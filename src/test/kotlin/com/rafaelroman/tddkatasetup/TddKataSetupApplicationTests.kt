@@ -1,5 +1,7 @@
 package com.rafaelroman.tddkatasetup
 
+import com.rafaelroman.tddkatasetup.fixtures.PostgresTestContainerInitializer
+import com.rafaelroman.tddkatasetup.fixtures.WithPostgreSql
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
