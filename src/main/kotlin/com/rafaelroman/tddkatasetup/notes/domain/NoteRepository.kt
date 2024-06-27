@@ -11,6 +11,8 @@ interface NoteRepository {
 
     fun list(): ListResponse
 
+    fun archive(id: UUID): Boolean
+
     sealed interface SaveResponse {
         data class Saved(val note: Note) : SaveResponse
 
