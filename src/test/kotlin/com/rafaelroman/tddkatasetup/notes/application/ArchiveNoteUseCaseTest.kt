@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test
 import java.util.UUID
 
 class ArchiveNoteUseCaseTest {
-
     private val repository: NoteRepository = mockk()
 
     private val useCase = ArchiveNoteUseCase(repository)
