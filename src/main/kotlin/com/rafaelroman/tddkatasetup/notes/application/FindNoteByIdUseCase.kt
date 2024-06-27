@@ -1,4 +1,3 @@
-package com.rafaelroman.tddkatasetup.notes.application;
+package com.rafaelroman.tddkatasetup.notes.application
 
-public class FindNoteByIdUseCase {
-}
+class FindNoteByIdUseCase
