@@ -12,7 +12,6 @@ import java.util.UUID
 
 @RestController
 class NotesController {
-
     @PostMapping("/v1/notes")
     fun createNote(
         @RequestBody note: Note,
