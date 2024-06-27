@@ -36,6 +36,7 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.11")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
     testImplementation("io.kotest:kotest-assertions-core:5.9.1")
+    testImplementation("org.awaitility:awaitility-kotlin:4.2.1")
 }
 
 kotlin {
