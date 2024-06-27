@@ -10,7 +10,6 @@ Welcome to the Note-Taking API Kata! This repository contains the skeleton of a 
 4. [The Kata](#the-kata)
 5. [Strategies for TDD](#strategies-for-tdd)
 6. [Requirements](#requirements)
-7. [Running the Application](#running-the-application)
 8. [Running Tests](#running-tests)
 
 ## Introduction
@@ -22,7 +21,6 @@ A kata is a small coding exercise designed to improve your skills through practi
 Here's an overview of the project's package structure:
 
 ```shell
-├── HELP.md
 ├── README.md
 ├── build.gradle.kts
 ├── gradle
@@ -132,9 +130,25 @@ Unit Tests for Domain and Application Layers:
    - Ensure no exceptions are thrown from the application or domain layers.
    - Integration Tests for Web (Controller) and Repository Layers:
 
-1. Use integration tests to verify the controller endpoints.
+2. Use integration tests to verify the controller endpoints.
    - Ensure repository integration tests interact with PostgreSQL (preferably using Testcontainers).
    - Integration tests should only load the necessary parts of the application context.
+   
+3. **Architecture Tests**:
+    - Ensure clean architecture layers have correct dependencies.
+        - **Domain** layer should not depend on any other layer.
+        - **Application** layer should depend only on the domain layer.
+        - **Infrastructure** layer can depend on both domain and application layers.
+    - Ensure JUnit 4 is **not used** in the project.
+    - Ensure the domain layer uses only core language libraries (Java/Kotlin).
+
+## Running Tests
+
+To run the tests, use the following Gradle command:
+
+```shell
+./gradlew test
+```
 
 ## Conclusion
-This kata is designed to give you hands-on experience with TDD and building a RESTful API in Kotlin with Spring Boot. Follow the steps, write tests first, and ensure that your implementation meets the requirements. Good luck, and happy coding!
+This kata is designed to give you hands-on experience with TDD and building a RESTish API in Kotlin with Spring Boot. Follow the steps, write tests first, and ensure that your implementation meets the requirements. Good luck, and happy coding!
