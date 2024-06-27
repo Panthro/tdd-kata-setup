@@ -13,7 +13,6 @@ import org.testcontainers.utility.DockerImageName
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FILE)
 annotation class WithPostgreSql
 
-
 private const val POSTGRESQL_IMAGE_NAME = "postgres:14.4"
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -22,22 +21,22 @@ class PostgresTestContainerInitializer private constructor() :
     PostgreSQLContainer<PostgresTestContainerInitializer>(
         DockerImageName.parse(POSTGRESQL_IMAGE_NAME).asCompatibleSubstituteFor("postgres"),
     ) {
-    companion object {
-        val instance: PostgresTestContainerInitializer =
-            PostgresTestContainerInitializer()
-                .withDatabaseName("dbname")
-                .withUsername("username")
-                .withPassword("secret")
-    }
+        companion object {
+            val instance: PostgresTestContainerInitializer =
+                PostgresTestContainerInitializer()
+                    .withDatabaseName("dbname")
+                    .withUsername("username")
+                    .withPassword("secret")
+        }
 
-    override fun initialize(configurableApplicationContext: ConfigurableApplicationContext) {
-        println("=========DB STARTING ========")
-        instance.start()
-        println("=========DB STARTED ========")
-        TestPropertyValues.of(
-            "spring.datasource.url=${instance.jdbcUrl}",
-            "spring.datasource.username=${instance.username}",
-            "spring.datasource.password=${instance.password}",
-        ).applyTo(configurableApplicationContext)
+        override fun initialize(configurableApplicationContext: ConfigurableApplicationContext) {
+            println("=========DB STARTING ========")
+            instance.start()
+            println("=========DB STARTED ========")
+            TestPropertyValues.of(
+                "spring.datasource.url=${instance.jdbcUrl}",
+                "spring.datasource.username=${instance.username}",
+                "spring.datasource.password=${instance.password}",
+            ).applyTo(configurableApplicationContext)
+        }
     }
-}

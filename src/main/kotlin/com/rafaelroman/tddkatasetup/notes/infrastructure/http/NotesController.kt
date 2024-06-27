@@ -31,5 +31,4 @@ class NotesController {
 
     @GetMapping("/v1/notes")
     fun listNotes(): ResponseEntity<*> = TODO()
-
 }

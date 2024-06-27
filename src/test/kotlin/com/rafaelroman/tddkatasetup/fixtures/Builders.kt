@@ -7,9 +7,10 @@ import java.util.UUID
 fun buildNote(
     id: UUID = UUID.randomUUID(),
     title: String = RandomStringUtils.randomAlphabetic(10),
-    content: String = RandomStringUtils.randomAlphabetic(100)
-): Note = Note(
-    id = id,
-    title = title,
-    content = content
-)
+    content: String = RandomStringUtils.randomAlphabetic(100),
+): Note =
+    Note(
+        id = id,
+        title = title,
+        content = content,
+    )

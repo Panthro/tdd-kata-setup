@@ -9,22 +9,20 @@ import org.springframework.context.annotation.Bean
 import org.springframework.jdbc.support.DatabaseStartupValidator
 import javax.sql.DataSource
 
-
 @SpringBootApplication
 class TddKataSetupApplication {
+    @Bean
+    fun databaseStartupValidator(dataSource: DataSource) = DatabaseStartupValidator().apply { setDataSource(dataSource) }
 
     @Bean
-    fun databaseStartupValidator(dataSource: DataSource) =
-        DatabaseStartupValidator().apply { setDataSource(dataSource) }
-
-    @Bean
-    fun dependsOnPostProcessor() = BeanFactoryPostProcessor { bf: ConfigurableListableBeanFactory ->
-        bf.getBeanNamesForType(Flyway::class.java)
-            .map { bf.getBeanDefinition(it) }
-            .forEach {
-                it.setDependsOn(bf.getBeanNamesForType(DatabaseStartupValidator::class.java).first())
-            }
-    }
+    fun dependsOnPostProcessor() =
+        BeanFactoryPostProcessor { bf: ConfigurableListableBeanFactory ->
+            bf.getBeanNamesForType(Flyway::class.java)
+                .map { bf.getBeanDefinition(it) }
+                .forEach {
+                    it.setDependsOn(bf.getBeanNamesForType(DatabaseStartupValidator::class.java).first())
+                }
+        }
 }
 
 fun main(args: Array<String>) {
