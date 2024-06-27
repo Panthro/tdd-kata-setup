@@ -1,8 +1,10 @@
 package com.rafaelroman.tddkatasetup.notes.application
 
 import com.rafaelroman.tddkatasetup.notes.domain.NoteRepository
+import org.springframework.stereotype.Component
 import java.util.UUID
 
+@Component
 class ArchiveNoteUseCase(private val repository: NoteRepository) {
     infix fun execute(request: Request): Response =
         if (repository.archive(request.id)) {
